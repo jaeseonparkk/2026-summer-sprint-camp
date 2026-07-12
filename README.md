@@ -1,4 +1,6 @@
 # 2026-summer-sprint-camp
+```
+2026-summer-sprint-camp/
 │
 ├── index.php                  # 메인 페이지
 ├── login.php                  # 로그인 화면(UI)
@@ -34,3 +36,4 @@
 │   └── images/
 │
 └── README.md
+```
