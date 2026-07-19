@@ -1,17 +1,229 @@
+/* ===========================
+   기본 설정
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+    font-family: "Malgun Gothic", sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
 }
 
-h1, h2 {
-  color: #333;
+/* ===========================
+   상단 메뉴
+=========================== */
+
+header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 20px 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-form {
-  margin-bottom: 20px;
+header h1{
+    font-size:28px;
 }
 
-button {
-  margin-left: 10px;
-  padding: 5px 10px;
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#dbeafe;
+}
+
+/* ===========================
+   메인 컨테이너
+=========================== */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+/* ===========================
+   소개 박스
+=========================== */
+
+.intro{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+    margin-bottom:40px;
+}
+
+.intro h2{
+
+    color:#1e3a8a;
+
+    margin-bottom:20px;
+}
+
+.intro p{
+
+    line-height:1.8;
+
+    font-size:18px;
+}
+
+/* ===========================
+   카드
+=========================== */
+
+.card-container{
+
+    display:flex;
+
+    gap:30px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+}
+
+.card{
+
+    background:white;
+
+    width:300px;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+    text-align:center;
+}
+
+.card h3{
+
+    margin-bottom:20px;
+
+    color:#1e3a8a;
+}
+
+.card p{
+
+    margin-bottom:25px;
+
+    line-height:1.6;
+}
+
+/* ===========================
+   버튼
+=========================== */
+
+button{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 30px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+button:hover{
+
+    background:#1d4ed8;
+}
+
+/* ===========================
+   로그인 / 회원가입 박스
+=========================== */
+
+.form-box{
+
+    width:420px;
+
+    margin:70px auto;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-box h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    color:#1e3a8a;
+}
+
+.form-box input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:20px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:16px;
+}
+
+.form-box button{
+
+    width:100%;
+}
+
+.form-box p{
+
+    text-align:center;
+
+    margin-top:20px;
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+footer{
+
+    background:#1e3a8a;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:60px;
 }
