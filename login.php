@@ -31,7 +31,7 @@
 
         <input
             type="text"
-            name="id"
+            name="username"
             placeholder="아이디"
             required>
 
