@@ -1,0 +1,6 @@
+# 업로드 파일
+uploads/*
+!uploads/.gitkeep
+
+# VS Code
+.vscode/
