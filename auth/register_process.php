@@ -12,11 +12,10 @@ require_once("../config/db.php");
 // 사용자가 입력한 값
 $username = $_POST['username'];
 $password = $_POST['password'];
-$name = $_POST['name'];
 
 // 사용자 입력을 그대로 SQL에 연결
-$sql = "INSERT INTO users(username, password, name)
-        VALUES('$username', '$password', '$name')";
+$sql = "INSERT INTO users(username, password)
+        VALUES('$username', '$password')";
 
 // SQL 실행
 if($pdo->query($sql)){
