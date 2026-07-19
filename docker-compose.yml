@@ -4,7 +4,7 @@ services:
     build: .
     container_name: apache
     ports:
-      - "80:80"
+      - "8080:80"
 
     volumes:
       - .:/var/www/html
@@ -23,7 +23,7 @@ services:
       MYSQL_DATABASE: secure_web
 
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
     volumes:
       - db_data:/var/lib/mysql
