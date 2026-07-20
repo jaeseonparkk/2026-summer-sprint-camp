@@ -1,12 +1,20 @@
 <?php
+require_once "../config/db.php";
 
-if (isset($_POST["filename"])) {
+if(isset($_POST["filename"])){
 
-    $file = "../uploads/" . $_POST["filename"];
+    $fileName = $_POST["filename"];
 
-    if (file_exists($file)) {
+    $file = "../uploads/" . $fileName;
+
+    if(file_exists($file)){
 
         unlink($file);
+
+        $sql = "DELETE FROM uploaded_files
+                WHERE file_name='$fileName'";
+
+        mysqli_query($conn,$sql);
 
         echo "삭제 완료";
 
