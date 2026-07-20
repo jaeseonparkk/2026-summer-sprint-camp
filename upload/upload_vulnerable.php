@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $sql = "INSERT INTO uploaded_files(user_id, file_name, file_type)
                     VALUES ('$userId', '$fileName', '$fileType')";
-
-            mysqli_query($conn, $sql);
+                    
+            $pdo->exec($sql);
 
             echo "파일 업로드 성공";
 
