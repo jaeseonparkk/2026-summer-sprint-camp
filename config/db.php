@@ -7,10 +7,10 @@
 */
 
 // 데이터베이스 정보
-$host = "localhost";
+$host = "mariadb";
 $dbname = "secure_web";
 $username = "root";
-$password = "";
+$password = "73459375298375";
 
 // 문자셋
 $charset = "utf8mb4";

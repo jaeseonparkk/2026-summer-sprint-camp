@@ -1,15 +1,48 @@
 <?php
+require_once "../config/db.php";
 
-$uploadDir = "../uploads/";
+$sql = "
+SELECT
+uploaded_files.id,
+users.username,
+uploaded_files.file_name,
+uploaded_files.file_type,
+uploaded_files.upload_time
+FROM uploaded_files
+JOIN users
+ON uploaded_files.user_id = users.id
+ORDER BY uploaded_files.id DESC
+";
 
-$files = array_diff(scandir($uploadDir), array('.', '..'));
+$result = mysqli_query($conn, $sql);
 
-echo "<ul>";
+echo "
+<table border='1'>
+<tr>
+<th>파일번호</th>
+<th>업로드한 사용자</th>
+<th>파일명</th>
+<th>파일 형식</th>
+<th>업로드 시간</th>
+</tr>
+";
 
-foreach ($files as $file) {
-    echo "<li>$file</li>";
+while($row = mysqli_fetch_assoc($result)){
+
+    echo "<tr>";
+
+    echo "<td>{$row['id']}</td>";
+
+    echo "<td>{$row['username']}</td>";
+
+    echo "<td>{$row['file_name']}</td>";
+
+    echo "<td>{$row['file_type']}</td>";
+
+    echo "<td>{$row['upload_time']}</td>";
+
+    echo "</tr>";
 }
 
-echo "</ul>";
-
+echo "</table>";
 ?>
