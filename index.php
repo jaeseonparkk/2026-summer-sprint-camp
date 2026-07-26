@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,10 +20,27 @@
 
     <nav>
         <a href="index.php">HOME</a>
-        <a href="login.php">LOGIN</a>
-        <a href="register.php">REGISTER</a>
-        <a href="upload.php">UPLOAD</a>
-        <a href="admin.php">ADMIN</a>
+
+        <?php if(isset($_SESSION['user_id'])): ?>
+
+            <span style="color:white; margin-right:15px;">
+               👤 <?php echo htmlspecialchars($_SESSION['username']); ?>님
+            </span>
+
+            <a href="upload.php">UPLOAD</a>
+
+            <?php if($_SESSION['role'] == 'admin'): ?>
+                <a href="admin.php">ADMIN</a>
+            <?php endif; ?>
+
+            <a href="auth/logout_process.php">LOGOUT</a>
+
+        <?php else: ?>
+
+            <a href="login.php">LOGIN</a>
+            <a href="register.php">REGISTER</a>
+
+        <?php endif; ?>
     </nav>
 
 </header>
