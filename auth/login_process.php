@@ -20,8 +20,7 @@ try {
     $result = $pdo->query($sql);
     $user = $result->fetch(PDO::FETCH_ASSOC);
 
-    // 비밀번호는 해시 검증
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && $password === $user['password']) {
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
