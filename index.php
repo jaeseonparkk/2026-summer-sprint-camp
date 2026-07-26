@@ -24,7 +24,7 @@ session_start();
 
         <?php if(isset($_SESSION['user_id'])): ?>
 
-            <span style="color:white; margin-right:15px;">
+            <span>
                👤 <?php echo htmlspecialchars($_SESSION['username']); ?>님
             </span>
 
