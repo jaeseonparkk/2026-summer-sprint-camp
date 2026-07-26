@@ -16,8 +16,9 @@ session_start();
 
 <header>
 
+<a href="index.php" class="logo-link">
     <h1>🛡 WebShell Defense</h1>
-
+</a>
     <nav>
         <a href="index.php">HOME</a>
 
