@@ -37,7 +37,7 @@ if (
           echo "<td>{$row['username']}</td>";
           echo "<td>{$row['role']}</td>";
           echo "<td>
-                  <form method='POST' action='admin_action.php'>
+                  <form method='POST' action='auth/admin_action.php'>
                     <input type='hidden' name='user_id' value='{$row['id']}'>
                     <button type='submit' name='action' value='suspend'>정지</button>
                     <button type='submit' name='action' value='delete'>삭제</button>
