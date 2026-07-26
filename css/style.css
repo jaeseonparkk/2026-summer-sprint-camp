@@ -227,3 +227,143 @@ footer{
 
     margin-top:60px;
 }
+
+/* ===========================
+   Upload Page
+=========================== */
+
+.upload-container{
+
+    width:900px;
+
+    margin:50px auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+.upload-title{
+
+    text-align:center;
+
+    color:#1e3a8a;
+
+    margin-bottom:30px;
+
+}
+
+.upload-form{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:35px;
+
+}
+
+.upload-form input[type=file]{
+
+    flex:1;
+
+    padding:10px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+}
+
+.upload-btn{
+
+    min-width:140px;
+
+}
+
+.table-title{
+
+    color:#1e3a8a;
+
+    margin-bottom:15px;
+
+}
+
+.upload-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.upload-table th{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:15px;
+
+}
+
+.upload-table td{
+
+    padding:12px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+.upload-table tr:nth-child(even){
+
+    background:#f8f9fa;
+
+}
+
+.upload-table tr:hover{
+
+    background:#eef4ff;
+
+}
+
+.delete-btn{
+
+    background:#dc2626;
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:6px;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+}
+
+.delete-btn:hover{
+
+    background:#b91c1c;
+
+}
+
+.empty{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:20px;
+
+}

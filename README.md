@@ -10,6 +10,7 @@
 ├── register.php               # 회원가입 화면(UI)
 ├── upload.php                 # 파일 업로드 화면(UI)
 ├── admin.php                  # 관리자 화면(UI)
+├── admin_action.php           # 관리자 동작 화면
 ├── logout.php                 # 로그아웃
 │
 ├── config/
