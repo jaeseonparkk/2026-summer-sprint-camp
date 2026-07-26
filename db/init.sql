@@ -29,8 +29,11 @@ CREATE TABLE IF NOT EXISTS uploaded_files (
 );
 -- 관리자 계정 추가
 INSERT INTO users (username, password, role)
-VALUES ('admin', '$2y$10$JLIUcI3jf8UcfL6jAgCI4eCkS831uU.4KKvZHmH3rK4G3n0sInIRK', 'admin');
-
+VALUES (
+    'admin',
+    '$2y$10$JLIUcI3jf8UcfL6jAgCI4eCkS831uU.4KKvZHmH3rK4G3n0sInIRK',
+    'admin'
+)
 ON DUPLICATE KEY UPDATE
     password = VALUES(password),
     role = 'admin';
