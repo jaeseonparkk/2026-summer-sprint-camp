@@ -11,7 +11,7 @@ require_once("../config/db.php");
 
 // 사용자가 입력한 값
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 // 중복 아이디 확인
 $check = "SELECT * FROM users WHERE username='$username'";
