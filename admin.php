@@ -30,10 +30,42 @@ $result = $pdo->query($sql);
 
 <body>
 
+<<<<<<< HEAD
 <header>
     <a href="index.php" class="logo-link">
         <h1>🛡 WebShell Defense</h1>
     </a>
+=======
+  <!-- 사용자 관리 -->
+  <section id="user-section">
+    <h2>사용자 목록</h2>
+    <table border="1">
+      <tr><th>ID</th><th>Username</th><th>Role</th><th>Action</th></tr>
+      <?php
+      // 사용자 목록 불러오기
+      $sql = "SELECT id, username, role FROM users ORDER BY id ASC";
+      $result = $pdo->query($sql);
+      while($row = $result->fetch(PDO::FETCH_ASSOC)){
+          echo "<tr>";
+          echo "<td>{$row['id']}</td>";
+          echo "<td>{$row['username']}</td>";
+          echo "<td>{$row['role']}</td>";
+          echo "<td>
+                  <form
+                      method='POST'
+                      action='auth/admin_action.php'
+                      onsubmit=\"return confirm('정말 이 사용자를 삭제하시겠습니까?');\"
+                  >
+                      <input type='hidden' name='user_id' value='{$row['id']}'>
+                      <button type='submit'>삭제</button>
+                  </form>
+                </td>";
+          echo "</tr>";
+      }
+      ?>
+    </table>
+  </section>
+>>>>>>> chi
 
     <nav>
         <a href="index.php">HOME</a>
