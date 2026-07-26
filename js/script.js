@@ -10,7 +10,12 @@
 */
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadFiles();
+  const fileList = document.getElementById("files");
+
+  // 기존 파일 목록 영역이 있는 페이지에서만 실행
+  if (fileList) {
+    loadFiles();
+  }
 
   const uploadAlert = document.getElementById("uploadAlert");
   const closeButton = document.querySelector(".upload-alert-close");
@@ -26,16 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
 /* 업로드된 파일 목록 불러오기 */
 
 function loadFiles() {
+  const fileList = document.getElementById("files");
+
+  if (!fileList) {
+    return;
+  }
+
   fetch("upload/file_list.php")
     .then(res => res.json())
     .then(data => {
-      const fileList = document.getElementById("files");
-
-      // 현재 페이지에 파일 목록 영역이 없으면 실행 중단
-      if (!fileList) {
-        return;
-      }
-
       fileList.innerHTML = "";
 
       data.forEach(file => {
@@ -46,6 +50,7 @@ function loadFiles() {
 
         const delBtn = document.createElement("button");
 
+        delBtn.type = "button";
         delBtn.textContent = "삭제";
         delBtn.onclick = () => deleteFile(file.id);
 
