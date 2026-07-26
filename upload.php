@@ -37,7 +37,9 @@ require_once("auth/auth_check.php");
 <header>
 
     <!-- 사이트 제목 -->
+<a href="index.php" class="logo-link">
     <h1>🛡 WebShell Defense</h1>
+</a>
 
     <nav>
 

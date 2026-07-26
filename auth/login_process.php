@@ -1,44 +1,41 @@
 <?php
-/*
-===========================================
-파일명 : auth/login_process.php
-역할 : 로그인 처리 (취약 버전)
-취약점 : SQL Injection
-===========================================
-*/
+
 
 session_start();
 
-// DB 연결
 require_once("../config/db.php");
 
-// 로그인 폼에서 입력받은 값
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
 
-// 취약한 코드 (사용자 입력을 그대로 SQL에 삽입)
-$sql = "SELECT * FROM users
-        WHERE username='$username'
-        AND password='$password'";
+// 취약점 유지:
+// username을 Prepared Statement 없이 SQL 문자열에 직접 삽입
+$sql = "SELECT id, username, password, role
+        FROM users
+        WHERE username = '$username'
+        LIMIT 1";
 
-// SQL 실행
-$result = $pdo->query($sql);
+try {
 
-// 로그인 성공 여부 확인
-if($result->rowCount() > 0){
+    $result = $pdo->query($sql);
+    $user = $result->fetch(PDO::FETCH_ASSOC);
 
-    $user = $result->fetch();
+    // 비밀번호는 해시 검증
+    if ($user && password_verify($password, $user['password'])) {
 
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['username'] = $user['username'];
-    $_SESSION['role'] = $user['role'];
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role'];
 
-    header("Location: ../index.php");
-    exit();
-
-}else{
+        header("Location: ../index.php");
+        exit;
+    }
 
     echo "아이디 또는 비밀번호가 틀렸습니다.";
+
+} catch (PDOException $e) {
+
+    echo "로그인 처리 중 오류가 발생했습니다.";
 
 }
 ?>
