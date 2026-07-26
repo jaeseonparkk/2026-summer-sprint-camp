@@ -32,11 +32,21 @@ header h1{
     font-size:28px;
 }
 
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
 nav a{
     color:white;
     text-decoration:none;
-    margin-left:20px;
     font-weight:bold;
+}
+
+nav span{
+    color:white;
+    margin:0;
 }
 
 nav a:hover{
