@@ -33,17 +33,17 @@ header h1{
 }
 
 nav{
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
+    gap: 35px;
 }
 
 nav a,
 nav span{
-    width:120px;          /* 모든 메뉴를 같은 너비로 */
-    text-align:center;    /* 가운데 정렬 */
-    color:white;
-    font-weight:bold;
-    text-decoration:none;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0;
 }
 
 nav a:hover{
