@@ -45,7 +45,7 @@ require_once("auth/auth_check.php");
         <a href="index.php">HOME</a>
 
         <!-- 로그인한 사용자 이름 표시 -->
-        <span style="color:white; margin-right:15px;">
+        <span>
             👤 <?php echo htmlspecialchars($_SESSION['username']); ?>님
         </span>
 
