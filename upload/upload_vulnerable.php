@@ -17,15 +17,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userId = $_SESSION["user_id"];
 
             $sql = "INSERT INTO uploaded_files(user_id, file_name, file_type)
-                    VALUES ('$userId', '$fileName', '$fileType')";
-                    
+            VALUES ('$userId', '$fileName', '$fileType')";
+
             $pdo->exec($sql);
 
-            echo "파일 업로드 성공";
+            header("Location: ../upload.php?upload=success");
+            exit;
 
-        } else {
-            echo "파일 업로드 실패";
-        }
+            } else {
+
+                header("Location: ../upload.php?upload=fail");
+                exit;
+            }
+
 
     } else {
         echo "파일이 선택되지 않았습니다.";
