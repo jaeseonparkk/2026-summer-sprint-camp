@@ -27,3 +27,13 @@ CREATE TABLE IF NOT EXISTS uploaded_files (
         REFERENCES users(id)
         ON DELETE CASCADE
 );
+-- 관리자 계정 추가
+INSERT INTO users (username, password, role)
+VALUES (
+    'admin',
+    'root4!!',
+    'admin'
+)
+ON DUPLICATE KEY UPDATE
+    password = VALUES(password),
+    role = 'admin';
