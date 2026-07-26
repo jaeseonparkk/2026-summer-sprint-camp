@@ -32,11 +32,18 @@ header h1{
     font-size:28px;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
-    font-weight:bold;
+nav{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+nav a,
+nav span{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0;
 }
 
 nav a:hover{
