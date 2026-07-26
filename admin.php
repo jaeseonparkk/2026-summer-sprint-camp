@@ -2,30 +2,45 @@
 session_start();
 require_once "config/db.php";
 
-// 관리자 권한 체크
+// 관리자 권한 확인
 if (
     !isset($_SESSION['user_id']) ||
     ($_SESSION['role'] ?? '') !== 'admin'
 ) {
-    header('Location: login.php');
+    header("Location: login.php");
     exit;
 }
 
 // 사용자 목록 조회
-$sql = "SELECT id, username, role FROM users ORDER BY id ASC";
+$sql = "SELECT id, username, role
+        FROM users
+        ORDER BY id ASC";
+
 $result = $pdo->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>관리자 페이지</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <script
+        src="js/script.js"
+        defer
+    ></script>
 </head>
 
 <body>
@@ -113,7 +128,13 @@ $result = $pdo->query($sql);
                             </td>
 
                             <td>
-                                <?php if ((int)$row['id'] === (int)$_SESSION['user_id']): ?>
+                                <?php
+                                $isCurrentUser =
+                                    (int)$row['id'] ===
+                                    (int)$_SESSION['user_id'];
+                                ?>
+
+                                <?php if ($isCurrentUser): ?>
 
                                     <span class="current-user">
                                         현재 계정
@@ -123,8 +144,9 @@ $result = $pdo->query($sql);
 
                                     <form
                                         method="POST"
-                                        action="admin_action.php"
+                                        action="auth/admin_action.php"
                                         class="admin-action-form"
+                                        onsubmit="return confirm('정말 이 사용자를 삭제하시겠습니까?');"
                                     >
                                         <input
                                             type="hidden"
@@ -134,19 +156,7 @@ $result = $pdo->query($sql);
 
                                         <button
                                             type="submit"
-                                            name="action"
-                                            value="suspend"
-                                            class="suspend-btn"
-                                        >
-                                            정지
-                                        </button>
-
-                                        <button
-                                            type="submit"
-                                            name="action"
-                                            value="delete"
                                             class="admin-delete-btn"
-                                            onclick="return confirm('이 사용자를 삭제하시겠습니까?');"
                                         >
                                             삭제
                                         </button>
@@ -170,7 +180,10 @@ $result = $pdo->query($sql);
             <div class="admin-card-header">
                 <div>
                     <h2>📤 파일 업로드</h2>
-                    <p>관리자 권한으로 실습 파일을 업로드합니다.</p>
+
+                    <p>
+                        관리자 권한으로 실습 파일을 업로드합니다.
+                    </p>
                 </div>
             </div>
 
@@ -200,7 +213,10 @@ $result = $pdo->query($sql);
             <div class="admin-card-header">
                 <div>
                     <h2>📁 업로드된 파일</h2>
-                    <p>서버에 업로드된 파일 목록을 확인합니다.</p>
+
+                    <p>
+                        서버에 업로드된 파일 목록을 확인합니다.
+                    </p>
                 </div>
             </div>
 

@@ -87,7 +87,7 @@ require_once("auth/auth_check.php");
     <form
         id="uploadForm"
         class="upload-form"
-        action="upload/upload_secure.php"
+        action="upload/upload_vulnerable.php"
         method="POST"
         enctype="multipart/form-data"
     >
