@@ -387,3 +387,270 @@ footer{
     padding:20px;
 
 }
+
+/* ===========================
+   Admin Page
+=========================== */
+
+.admin-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    min-height: 650px;
+}
+
+/* 관리자 소개 영역 */
+
+.admin-intro {
+    background: white;
+    padding: 35px 40px;
+    margin-bottom: 30px;
+
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+}
+
+.admin-intro h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.admin-intro p {
+    color: #666;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* 관리자 카드 배치 */
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+}
+
+/* 사용자 목록 카드는 가로 전체 사용 */
+
+.admin-user-card {
+    grid-column: 1 / -1;
+}
+
+/* 관리자 카드 */
+
+.admin-card {
+    background: white;
+    padding: 30px;
+
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.admin-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-card-header h2 {
+    color: #1e3a8a;
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.admin-card-header p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* 테이블 */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: #2563eb;
+    color: white;
+
+    padding: 15px;
+    text-align: center;
+}
+
+.admin-table th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.admin-table th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.admin-table td {
+    padding: 15px;
+    text-align: center;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.admin-table tbody tr:hover {
+    background: #eef4ff;
+}
+
+/* 권한 표시 */
+
+.role-badge {
+    display: inline-block;
+
+    min-width: 70px;
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.admin-role {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.user-role {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+/* 관리자 작업 버튼 */
+
+.admin-action-form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.admin-action-form button {
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+.suspend-btn {
+    background: #f59e0b;
+}
+
+.suspend-btn:hover {
+    background: #d97706;
+}
+
+.admin-delete-btn {
+    background: #dc2626;
+}
+
+.admin-delete-btn:hover {
+    background: #b91c1c;
+}
+
+.current-user {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    background: #dcfce7;
+    color: #15803d;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* 관리자 업로드 폼 */
+
+.admin-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-upload-form input[type="file"] {
+    width: 100%;
+    padding: 13px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    background: #f9fafb;
+}
+
+.admin-upload-form button {
+    width: 100%;
+}
+
+/* 관리자 파일 목록 */
+
+.admin-file-list {
+    min-height: 100px;
+}
+
+.admin-file-list ul {
+    list-style: none;
+}
+
+.admin-file-list li {
+    padding: 13px 15px;
+    margin-bottom: 10px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+/* 화면 크기가 작을 때 */
+
+@media screen and (max-width: 850px) {
+
+    header {
+        padding: 20px 25px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-user-card {
+        grid-column: auto;
+    }
+
+    .admin-card {
+        padding: 20px;
+    }
+
+    .admin-action-form {
+        flex-direction: column;
+    }
+}
