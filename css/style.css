@@ -743,3 +743,8 @@ section h2,
     border-left: none !important;
     padding-left: 0 !important;
 }
+
+/* 관리자 페이지에서는 section 여백 제거 */
+.admin-container section {
+    margin-top: 0 !important;
+}
