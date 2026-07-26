@@ -37,10 +37,13 @@ if (
           echo "<td>{$row['username']}</td>";
           echo "<td>{$row['role']}</td>";
           echo "<td>
-                  <form method='POST' action='auth/admin_action.php'>
-                    <input type='hidden' name='user_id' value='{$row['id']}'>
-                    <button type='submit' name='action' value='suspend'>정지</button>
-                    <button type='submit' name='action' value='delete'>삭제</button>
+                  <form
+                      method='POST'
+                      action='auth/admin_action.php'
+                      onsubmit=\"return confirm('정말 이 사용자를 삭제하시겠습니까?');\"
+                  >
+                      <input type='hidden' name='user_id' value='{$row['id']}'>
+                      <button type='submit'>삭제</button>
                   </form>
                 </td>";
           echo "</tr>";
