@@ -3,8 +3,11 @@ session_start();
 require_once "config/db.php";
 
 // 관리자 권한 체크
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    echo "관리자만 접근 가능합니다.";
+if (
+    !isset($_SESSION['user_id']) ||
+    ($_SESSION['role'] ?? '') !== 'admin'
+) {
+    header('Location: login.php');
     exit;
 }
 ?>
