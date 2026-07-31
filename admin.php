@@ -231,6 +231,7 @@ $result = $pdo->query($sql);
                     class="file-list-frame"
                     src="upload/file_list.php"
                     title="업로드된 파일 목록"
+                    onload="document.getElementById('fileListLoading').style.display='none';"
                 >
                 </iframe>
 
