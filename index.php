@@ -86,7 +86,7 @@ session_start();
                 공격을 차단하는 방법을 학습합니다.
             </p>
 
-            <button onclick="location.href='upload.php'">
+            <button onclick="location.href='secure_coding.php'">
                 확인하기
             </button>
 
