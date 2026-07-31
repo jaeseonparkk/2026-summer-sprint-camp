@@ -6,6 +6,7 @@
 ├── Dockerfile                 # PHP 실행 환경 설정
 │
 ├── index.php                  # 메인 페이지
+├── secure_coding.php          # 시큐어 코딩 소개 및 프로젝트 안내 페이지
 ├── login.php                  # 로그인 화면(UI)
 ├── register.php               # 회원가입 화면(UI)
 ├── upload.php                 # 파일 업로드 화면(UI)
