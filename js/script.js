@@ -27,6 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// 관리자 페이지 iframe 로딩 문구 처리
+  const fileListFrame =
+    document.getElementById("adminFileListFrame");
+
+  const fileListLoading =
+    document.getElementById("fileListLoading");
+
+  if (fileListFrame && fileListLoading) {
+    fileListFrame.addEventListener("load", () => {
+      fileListLoading.remove();
+    });
+  }
+});
 
 /* 업로드된 파일 목록 불러오기 */
 
