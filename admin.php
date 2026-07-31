@@ -221,11 +221,19 @@ $result = $pdo->query($sql);
             </div>
 
             <div class="admin-file-list">
-                <ul id="files">
-                    <li class="empty">
-                        업로드된 파일을 불러오는 중입니다.
-                    </li>
-                </ul>
+
+                <p id="fileListLoading" class="empty">
+                    업로드된 파일을 불러오는 중입니다.
+                </p>
+
+                <iframe
+                    id="adminFileListFrame"
+                    class="file-list-frame"
+                    src="upload/file_list.php"
+                    title="업로드된 파일 목록"
+                >
+                </iframe>
+
             </div>
 
         </section>
