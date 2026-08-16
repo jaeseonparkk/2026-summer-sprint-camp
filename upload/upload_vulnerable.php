@@ -35,6 +35,24 @@ if (!in_array($fileType, $allowedExtensions, true)) {
     exit("허용되지 않은 파일 확장자입니다.");
 }
 
+// 실제 파일 MIME 타입 검사
+$finfo = new finfo(FILEINFO_MIME_TYPE);
+$mimeType = $finfo->file($_FILES["file"]["tmp_name"]);
+
+$allowedMimeTypes = [
+    "jpg" => "image/jpeg",
+    "jpeg" => "image/jpeg",
+    "png" => "image/png",
+    "gif" => "image/gif"
+];
+
+if (
+    !isset($allowedMimeTypes[$fileType]) ||
+    $mimeType !== $allowedMimeTypes[$fileType]
+) {
+    exit("파일 확장자와 실제 파일 형식이 일치하지 않습니다.");
+}
+
 // 저장할 최종 경로
 $targetFile = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
 
