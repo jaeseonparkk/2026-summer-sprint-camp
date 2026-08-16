@@ -10,8 +10,12 @@
 require_once("../config/db.php");
 
 // 사용자가 입력한 값
-$username = $_POST['username'] ?? '';
+$username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
+
+if ($username === '' || $password === '') {
+    exit("아이디와 비밀번호를 입력해주세요.");
+}
 
 // 중복 아이디 확인
 $check = "SELECT * FROM users WHERE username='$username'";
