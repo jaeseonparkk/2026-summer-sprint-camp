@@ -2,8 +2,7 @@
 /*
 ===========================================
 파일명 : auth/register_process.php
-역할 : 회원가입 처리 (취약 버전)
-취약점 : SQL Injection
+역할 : 회원가입 처리 (보완 버전)
 ===========================================
 */
 
@@ -33,7 +32,10 @@ if ($stmt->fetch()) {
 
 }
 
-// 사용자 입력을 그대로 SQL에 연결
+// 비밀번호 해시화
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+// 회원가입
 $sql = "INSERT INTO users(username, password)
         VALUES(:username, :password)";
 
@@ -41,11 +43,11 @@ $stmt = $pdo->prepare($sql);
 
 $result = $stmt->execute([
     ':username' => $username,
-    ':password' => $password
+    ':password' => $hashedPassword
 ]);
 
-// SQL 실행
-if($pdo->query($sql)){
+
+if($result){
     header("Location: ../login.php");
     exit();
 }else{
