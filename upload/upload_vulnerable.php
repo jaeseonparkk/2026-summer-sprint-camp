@@ -14,6 +14,13 @@ if ($_FILES["file"]["error"] !== UPLOAD_ERR_OK) {
     exit("파일 업로드 오류 코드: " . $_FILES["file"]["error"]);
 }
 
+// 최대 파일 크기 5MB
+$maxFileSize = 5 * 1024 * 1024;
+
+if ($_FILES["file"]["size"] <= 0 || $_FILES["file"]["size"] > $maxFileSize) {
+    exit("파일 크기는 5MB 이하만 허용됩니다.");
+}
+
 // uploads 폴더 절대경로
 $uploadDir = realpath(__DIR__ . "/../uploads");
 
