@@ -60,6 +60,29 @@ if ($imageInfo === false) {
     exit("정상적인 이미지 파일이 아닙니다.");
 }
 
+// 파일 내부 위험 코드 검사
+$fileContents = file_get_contents($_FILES["file"]["tmp_name"]);
+
+if ($fileContents === false) {
+    exit("파일 내용을 확인할 수 없습니다.");
+}
+
+$dangerousPatterns = [
+    '/<\?php/i',
+    '/<\?=/i',
+    '/\bsystem\s*\(/i',
+    '/\bexec\s*\(/i',
+    '/\bshell_exec\s*\(/i',
+    '/\bpassthru\s*\(/i',
+    '/\beval\s*\(/i'
+];
+
+foreach ($dangerousPatterns as $pattern) {
+    if (preg_match($pattern, $fileContents)) {
+        exit("파일 내부에서 위험한 코드가 발견되었습니다.");
+    }
+}
+
 // 저장할 최종 경로
 $targetFile = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
 
