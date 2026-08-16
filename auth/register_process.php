@@ -18,10 +18,15 @@ if ($username === '' || $password === '') {
 }
 
 // 중복 아이디 확인
-$check = "SELECT * FROM users WHERE username='$username'";
-$result = $pdo->query($check);
+$check = "SELECT * FROM users WHERE username = :username";
 
-if($result->rowCount() > 0){
+$stmt = $pdo->prepare($check);
+
+$stmt->execute([
+    ':username' => $username
+]);
+
+if ($stmt->fetch()) {
 
     echo "이미 존재하는 아이디입니다.";
     exit();
@@ -30,7 +35,14 @@ if($result->rowCount() > 0){
 
 // 사용자 입력을 그대로 SQL에 연결
 $sql = "INSERT INTO users(username, password)
-        VALUES('$username', '$password')";
+        VALUES(:username, :password)";
+
+$stmt = $pdo->prepare($sql);
+
+$result = $stmt->execute([
+    ':username' => $username,
+    ':password' => $password
+]);
 
 // SQL 실행
 if($pdo->query($sql)){
