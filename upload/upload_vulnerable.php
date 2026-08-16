@@ -28,6 +28,13 @@ if (!is_writable($uploadDir)) {
 $fileName = basename($_FILES["file"]["name"]);
 $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
+// 허용할 확장자
+$allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+
+if (!in_array($fileType, $allowedExtensions, true)) {
+    exit("허용되지 않은 파일 확장자입니다.");
+}
+
 // 저장할 최종 경로
 $targetFile = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
 
