@@ -2,6 +2,10 @@
 session_start();
 require_once "../config/db.php";
 
+if (!isset($_SESSION["user_id"])) {
+    exit("로그인이 필요합니다.");
+}
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit("잘못된 접근입니다.");
 }
@@ -110,8 +114,7 @@ if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
 } else {
 
     echo "<h3>파일 업로드 실패</h3>";
-    echo "저장 경로 : " . htmlspecialchars($targetFile) . "<br>";
-    echo "임시 파일 : " . htmlspecialchars($_FILES["file"]["tmp_name"]) . "<br>";
+    echo "파일 저장 중 오류가 발생했습니다.";
 
     exit;
 }
