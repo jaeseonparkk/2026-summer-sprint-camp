@@ -53,6 +53,13 @@ if (
     exit("파일 확장자와 실제 파일 형식이 일치하지 않습니다.");
 }
 
+// 실제 이미지 파일인지 검사
+$imageInfo = @getimagesize($_FILES["file"]["tmp_name"]);
+
+if ($imageInfo === false) {
+    exit("정상적인 이미지 파일이 아닙니다.");
+}
+
 // 저장할 최종 경로
 $targetFile = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
 
