@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 
 require_once("../config/db.php");
@@ -8,19 +7,25 @@ require_once("../config/db.php");
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
-// 취약점 유지:
-// username을 Prepared Statement 없이 SQL 문자열에 직접 삽입
-$sql = "SELECT id, username, password, role
-        FROM users
-        WHERE username = '$username'
-        LIMIT 1";
-
 try {
 
-    $result = $pdo->query($sql);
-    $user = $result->fetch(PDO::FETCH_ASSOC);
+    // Prepared Statement 사용
+    // 사용자 입력값을 SQL문과 분리하여 SQL Injection 방지
+    $sql = "SELECT id, username, password, role
+            FROM users
+            WHERE username = :username
+            LIMIT 1";
 
-    if ($user && $password === $user['password']) {
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute([
+        ':username' => $username
+    ]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // 해시된 비밀번호 검증
+    if ($user && password_verify($password, $user['password'])) {
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
@@ -35,6 +40,6 @@ try {
 } catch (PDOException $e) {
 
     echo "로그인 처리 중 오류가 발생했습니다.";
-
 }
+
 ?>
