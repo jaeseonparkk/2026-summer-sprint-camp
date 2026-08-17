@@ -137,7 +137,14 @@ if($stmt->rowCount() == 0){
 
     <?php endif; ?>
 
-    <td><?php echo htmlspecialchars($row['file_name']); ?></td>
+    <td>
+        <a
+            href="../uploads/<?php echo rawurlencode($row['file_name']); ?>"
+            target="_blank"
+        >
+            <?php echo htmlspecialchars($row['file_name']); ?>
+        </a>
+    </td>
 
     <td><?php echo htmlspecialchars($row['file_type']); ?></td>
 
