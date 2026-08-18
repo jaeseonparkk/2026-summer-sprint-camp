@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS uploaded_files (
 INSERT INTO users (username, password, role)
 VALUES (
     'admin',
-    'root4!!',
+    '$2y$12$8I6s2fDjfFgWcPPOQTBGvOPFHSFxFWlYkcX8V/xI.BolEomNM8JQG',
     'admin'
 )
 ON DUPLICATE KEY UPDATE
