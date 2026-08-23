@@ -33,7 +33,9 @@
 
     <br>
 
+    <!-- 로그아웃 요청을 POST 방식으로 전달합니다. -->
     <form action="auth/logout_process.php" method="POST">
+        <!-- 실제 세션 삭제는 logout_process.php에서 처리합니다. -->
         <button type="submit">
             로그아웃
         </button>
@@ -41,6 +43,7 @@
 
     <br>
 
+    <!-- 로그아웃하지 않고 메인 페이지로 이동합니다. -->
     <button onclick="location.href='index.php'">
         메인으로
     </button>
