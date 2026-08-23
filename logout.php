@@ -33,15 +33,15 @@
 
     <br>
 
-    <form action="auth/logout_process.php" method="POST">
-        <button type="submit">
+    <form action="auth/logout_process.php" method="POST"> <!-- 로그아웃 버튼 클릭 시 POST 방식으로 logout_process.php에 요청 -->
+        <button type="submit">                            <!--실제 세션 삭제 및 로그아웃 처리는 logout_process.php에서 수행 -->
             로그아웃
         </button>
     </form>
 
     <br>
 
-    <button onclick="location.href='index.php'">
+    <button onclick="location.href='index.php'"> <!-- 로그아웃하지 않고 메인 페이지로 이동 -->
         메인으로
     </button>
 
