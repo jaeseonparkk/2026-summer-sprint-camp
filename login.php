@@ -13,11 +13,13 @@
 
 <header>
 
-<a href="index.php" class="logo-link"> /*웹사이트의 로고와 이름을 클릭하면 index.php로 이동함 */
+<!-- 웹사이트의 로고와 이름을 클릭하면 index.php로 이동함 -->
+<a href="index.php" class="logo-link">
     <h1>🛡 WebShell Defense</h1>
 </a>
 
-    <nav> /* 이후 각 페이지로 이동 */
+    <!-- 각 페이지로 이동하는 메뉴 -->
+    <nav>
         <a href="index.php">HOME</a>
         <a href="login.php">LOGIN</a>
         <a href="register.php">REGISTER</a>
