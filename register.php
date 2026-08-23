@@ -28,8 +28,9 @@
 <div class="form-box">
 
     <h2>회원가입</h2>
+
     <!-- 회원가입 정보를 POST 방식으로 register_process.php에 전달
-     실제 입력값 검사, 비밀번호 해시 및 DB 저장은 register_process.php에서 처리 -->
+         실제 입력값 검사, 비밀번호 해시 및 DB 저장은 register_process.php에서 처리 -->
     <form action="auth/register_process.php" method="POST">
 
         <!-- 사용자 아이디 입력 -->
@@ -39,7 +40,7 @@
             placeholder="아이디"
             required>
         <!-- 비밀번호 입력 시 글자가 보이지 않도록 표시
-         실제 비밀번호 해시는 register_process.php에서 처리 -->
+             실제 비밀번호 해시는 register_process.php에서 처리 -->
         <input
             type="password"
             name="password"
