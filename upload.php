@@ -1,24 +1,15 @@
 <?php
-/*
-===========================================
-파일명 : upload.php
-역할 : 파일 업로드 페이지
-기능 :
-- 로그인한 사용자만 접근 가능
-- 파일 업로드
-- 업로드 결과 알림 표시
-- 업로드된 파일 목록 조회
-===========================================
-*/
 
 // 로그인 여부 확인
+// 로그인하지 않은 사용자는 업로드 페이지에 접근할 수 없음
 require_once("auth/auth_check.php");
 
-// 업로드 결과 메시지
+// 업로드 결과 메시지 초기화
 $uploadMessage = "";
 $uploadMessageType = "";
 
 // upload_vulnerable.php에서 전달한 업로드 결과 확인
+// URL의 ?upload=success 또는 ?upload=fail 값에 따라 알림 메시지를 설정
 if (isset($_GET["upload"])) {
 
     switch ($_GET["upload"]) {
@@ -32,11 +23,6 @@ if (isset($_GET["upload"])) {
             $uploadMessage = "파일 업로드에 실패했습니다.";
             $uploadMessageType = "error";
             break;
-
-        default:
-            $uploadMessage = "";
-            $uploadMessageType = "";
-            break;
     }
 }
 ?>
@@ -45,112 +31,72 @@ if (isset($_GET["upload"])) {
 <html lang="ko">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>파일 업로드</title>
 
-    <!-- 공통 CSS -->
+    <!-- 공통 CSS / JavaScript -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- 공통 JavaScript -->
     <script src="js/script.js" defer></script>
-
 </head>
 
 <body>
 
-<!-- ===========================
-     Header
-=========================== -->
-
 <header>
-
-    <!-- 사이트 제목 -->
     <a href="index.php" class="logo-link">
         <h1>🛡 WebShell Defense</h1>
     </a>
 
     <nav>
-
-        <!-- 메인 페이지 -->
         <a href="index.php">HOME</a>
 
-        <!-- 로그인한 사용자 이름 표시 -->
+        <!-- 현재 로그인한 사용자 이름 출력 -->
         <span>
-            👤
-            <?php
-            echo htmlspecialchars(
+            👤 <?= htmlspecialchars(
                 $_SESSION["username"],
                 ENT_QUOTES,
                 "UTF-8"
-            );
-            ?>님
+            ) ?>님
         </span>
 
-        <!-- 업로드 페이지 -->
         <a href="upload.php">UPLOAD</a>
 
-        <!-- 관리자만 ADMIN 메뉴 표시 -->
+        <!-- 관리자 계정일 경우에만 ADMIN 메뉴 표시 -->
         <?php if (($_SESSION["role"] ?? "") === "admin"): ?>
-
             <a href="admin.php">ADMIN</a>
-
         <?php endif; ?>
 
-        <!-- 로그아웃 -->
         <a href="auth/logout_process.php">LOGOUT</a>
-
     </nav>
-
 </header>
-
-
-<!-- ===========================
-     업로드 영역
-=========================== -->
 
 <main class="upload-container">
 
-    <!-- 페이지 제목 -->
-    <h1 class="upload-title">
-        📂 파일 업로드
-    </h1>
+    <h1 class="upload-title">📂 파일 업로드</h1>
 
-
-    <!-- ===========================
-         업로드 결과 알림
-    =========================== -->
-
+    <!-- 업로드 성공 또는 실패 결과가 있을 경우 알림 표시 -->
     <?php if ($uploadMessage !== ""): ?>
 
         <div
             id="uploadAlert"
-            class="upload-alert <?php
-                echo htmlspecialchars(
-                    $uploadMessageType,
-                    ENT_QUOTES,
-                    "UTF-8"
-                );
-            ?>"
+            class="upload-alert <?= htmlspecialchars(
+                $uploadMessageType,
+                ENT_QUOTES,
+                "UTF-8"
+            ) ?>"
             role="alert"
         >
-
+            <!-- 업로드 결과 메시지 출력 -->
             <span>
-                <?php
-                echo htmlspecialchars(
+                <?= htmlspecialchars(
                     $uploadMessage,
                     ENT_QUOTES,
                     "UTF-8"
-                );
-                ?>
+                ) ?>
             </span>
 
+            <!-- 알림 메시지를 닫는 버튼 -->
             <button
                 type="button"
                 class="upload-alert-close"
@@ -158,16 +104,12 @@ if (isset($_GET["upload"])) {
             >
                 &times;
             </button>
-
         </div>
 
     <?php endif; ?>
 
-
-    <!-- ===========================
-         파일 업로드 폼
-    =========================== -->
-
+    <!-- 파일 업로드 폼
+         multipart/form-data는 파일 데이터를 서버로 전송하기 위해 필요 -->
     <form
         id="uploadForm"
         class="upload-form"
@@ -175,60 +117,40 @@ if (isset($_GET["upload"])) {
         method="POST"
         enctype="multipart/form-data"
     >
-
-        <!-- 업로드할 파일 선택 -->
+        <!-- 사용자가 업로드할 파일 선택 -->
         <input
             type="file"
             id="file"
             name="file"
         >
 
-        <!-- 업로드 버튼 -->
+        <!-- 선택한 파일을 서버로 전송 -->
         <button
             type="submit"
             class="upload-btn"
         >
             업로드
         </button>
-
     </form>
 
+    <h2 class="table-title">📋 업로드된 파일 목록</h2>
 
-    <!-- ===========================
-         업로드된 파일 목록
-    =========================== -->
-
-    <h2 class="table-title">
-        📋 업로드된 파일 목록
-    </h2>
-
-    <!--
-        file_list.php를 iframe으로 출력
-        업로드된 파일 목록을 별도로 관리
-    -->
+    <!-- file_list.php의 결과를 현재 페이지 안에 표시 -->
     <iframe
         id="fileListFrame"
         class="file-list-frame"
         src="upload/file_list.php"
         title="업로드된 파일 목록"
-    >
-    </iframe>
+    ></iframe>
 
 </main>
 
-
-<!-- ===========================
-     Footer
-=========================== -->
-
 <footer>
-
     <p>
         2026 Summer Sprint Camp
         <br>
         WebShell Defense Project
     </p>
-
 </footer>
 
 </body>

@@ -25,6 +25,18 @@ try {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // 해시된 비밀번호 검증
+//     if ($user && password_verify($password, $user['password'])) {
+
+//     $_SESSION['user_id'] = $user['id'];
+//     $_SESSION['username'] = $user['username'];
+//     $_SESSION['role'] = $user['role'];
+
+//     echo "로그인 성공<br>";
+//     echo "username: " . $_SESSION['username'] . "<br>";
+//     echo "role: " . $_SESSION['role'];
+//     exit;
+// }
+
     if ($user && password_verify($password, $user['password'])) {
 
         $_SESSION['user_id'] = $user['id'];
