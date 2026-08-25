@@ -1,9 +1,5 @@
 # 2026-summer-sprint-camp
 
-## 프로젝트 구조
-
-VS Code Explorer의 기본 정렬 방식인 **폴더 우선, 이름 오름차순**을 기준으로 정리했습니다.
-
 ```text
 2026-summer-sprint-camp/
 ├── assets/
@@ -41,5 +37,3 @@ VS Code Explorer의 기본 정렬 방식인 **폴더 우선, 이름 오름차순
 ├── secure_coding.php          # 시큐어 코딩 및 프로젝트 안내
 └── upload.php                 # 파일 업로드 화면
 ```
-
-`.git/` 디렉터리는 Git 내부 관리 데이터이므로 구조표에서 제외했습니다.

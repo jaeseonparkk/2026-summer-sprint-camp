@@ -239,8 +239,6 @@ $result = $pdo->query($sql);
 
 </main>
 
-
-<!-- 푸터 -->
 <footer>
     <p>
         2026 Summer Sprint Camp
