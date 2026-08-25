@@ -8,7 +8,7 @@ require_once("auth/auth_check.php");
 $uploadMessage = "";
 $uploadMessageType = "";
 
-// upload_vulnerable.php에서 전달한 업로드 결과 확인
+// upload_secure.php에서 전달한 업로드 결과 확인
 // URL의 ?upload=success 또는 ?upload=fail 값에 따라 알림 메시지를 설정
 if (isset($_GET["upload"])) {
 
@@ -113,7 +113,7 @@ if (isset($_GET["upload"])) {
     <form
         id="uploadForm"
         class="upload-form"
-        action="upload/upload_vulnerable.php"
+        action="upload/upload_secure.php"
         method="POST"
         enctype="multipart/form-data"
     >
@@ -122,6 +122,8 @@ if (isset($_GET["upload"])) {
             type="file"
             id="file"
             name="file"
+            accept="image/jpeg,image/png,image/gif"
+            required
         >
 
         <!-- 선택한 파일을 서버로 전송 -->
