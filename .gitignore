@@ -1,6 +1,35 @@
-# 업로드 파일
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Uploaded runtime files
 uploads/*
 !uploads/.gitkeep
 
-# VS Code
+# IDEs and editors
+.idea/
 .vscode/
+*.code-workspace
+*.suo
+*.user
+*.swp
+*.swo
+*~
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary and cache files
+*.tmp
+*.temp
+*.cache
+tmp/
+temp/
+.cache/
