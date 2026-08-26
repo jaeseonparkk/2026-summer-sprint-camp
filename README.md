@@ -1,5 +1,6 @@
-## 2026-summer-sprint-camp/
+## 2026-summer-sprint-camp
 ```
+2026-summer-sprint-camp
 │
 ├── docker-compose.yml        # Docker 컨테이너 구성
 ├── Dockerfile                 # PHP + Apache 실행 환경 설정
