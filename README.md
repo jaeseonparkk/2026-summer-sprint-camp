@@ -1,46 +1,39 @@
 # 2026-summer-sprint-camp
-```
+
+```text
 2026-summer-sprint-camp/
-│
-├── docker-compose.yml         # Docker Compose 설정
-├── Dockerfile                 # PHP 실행 환경 설정
-│
-├── index.php                  # 메인 페이지
-├── secure_coding.php          # 시큐어 코딩 소개 및 프로젝트 안내 페이지
-├── login.php                  # 로그인 화면(UI)
-├── register.php               # 회원가입 화면(UI)
-├── upload.php                 # 파일 업로드 화면(UI)
-├── admin.php                  # 관리자 화면(UI)
-├── admin_action.php           # 관리자 동작 화면
-├── logout.php                 # 로그아웃
-│
-├── config/
-│   └── db.php                 # DB 연결
-│
-├── db/
-│   └── init.sql               # DB 초기화 스크립트
-│
-├── auth/
-│   ├── login_process.php      # 로그인 처리
-│   ├── register_process.php   # 회원가입 처리
-│   ├── logout_process.php     # 로그아웃 처리
-│   └── auth_check.php         # 로그인/권한 확인
-│
-├── upload/
-│   ├── upload_vulnerable.php  # 취약한 파일 업로드 처리
-│   ├── upload_secure.php      # 보안 파일 업로드 처리
-│   ├── file_list.php          # 업로드 파일 목록 조회
-│   └── delete_file.php        # 업로드 파일 삭제
-│
-├── uploads/                   # 업로드 파일 저장
-│
-├── css/
-│   └── style.css              # 전체 스타일
-│
-├── js/
-│   └── script.js              # 클라이언트 스크립트
-│
 ├── assets/
 │   └── images/                # 이미지 리소스
-│
-└── README.md                  # 프로젝트 설명
+├── auth/
+│   ├── admin_action.php       # 관리자 사용자 삭제 처리
+│   ├── auth_check.php         # 로그인 및 권한 확인
+│   ├── login_process.php      # 로그인 처리
+│   ├── logout_process.php     # 로그아웃 처리
+│   └── register_process.php   # 회원가입 처리
+├── config/
+│   └── db.php                 # 데이터베이스 연결 설정
+├── css/
+│   └── style.css              # 공통 스타일시트
+├── db/
+│   └── init.sql               # 데이터베이스 초기화 스크립트
+├── js/
+│   └── script.js              # 업로드 알림 UI 스크립트
+├── upload/
+│   ├── delete_file.php        # 업로드 파일 삭제
+│   ├── file_list.php          # 업로드 파일 목록 조회
+│   ├── upload_secure.php      # 보안 파일 업로드 처리
+│   └── upload_vulnerable.php  # 비활성화된 기존 엔드포인트(HTTP 410)
+├── uploads/
+│   └── .gitkeep               # 빈 업로드 디렉터리 유지
+├── .gitignore                 # Git 추적 제외 규칙
+├── admin.php                  # 관리자 화면
+├── docker-compose.yml         # Docker Compose 설정
+├── Dockerfile                 # PHP·Apache 실행 환경
+├── index.php                  # 메인 페이지
+├── login.php                  # 로그인 화면
+├── logout.php                 # 로그아웃 안내 화면
+├── README.md                  # 프로젝트 설명
+├── register.php               # 회원가입 화면
+├── secure_coding.php          # 시큐어 코딩 및 프로젝트 안내
+└── upload.php                 # 파일 업로드 화면
+```

@@ -34,7 +34,6 @@ $result = $pdo->query($sql);
 
     <!-- 공통 CSS / JavaScript -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -189,17 +188,18 @@ $result = $pdo->query($sql);
                 </div>
             </div>
 
-            <!-- 선택한 파일을 upload_vulnerable.php로 전송 -->
+            <!-- 선택한 파일을 보안 업로드 처리기로 전송 -->
             <form
                 id="uploadForm"
                 class="admin-upload-form"
-                action="upload/upload_vulnerable.php"
+                action="upload/upload_secure.php"
                 method="POST"
                 enctype="multipart/form-data"
             >
                 <input
                     type="file"
                     name="file"
+                    accept="image/jpeg,image/png,image/gif"
                     required
                 >
 
@@ -223,21 +223,12 @@ $result = $pdo->query($sql);
 
             <div class="admin-file-list">
 
-                <!-- 파일 목록이 로딩되는 동안 표시 -->
-                <p id="fileListLoading" class="empty">
-                    업로드된 파일을 불러오는 중입니다.
-                </p>
-
-                <!--
-                    file_list.php를 관리자 페이지 안에 표시
-                    로딩이 끝나면 위의 로딩 메시지를 숨김
-                -->
+                <!-- file_list.php를 관리자 페이지 안에 표시 -->
                 <iframe
                     id="adminFileListFrame"
                     class="file-list-frame"
                     src="upload/file_list.php"
                     title="업로드된 파일 목록"
-                    onload="document.getElementById('fileListLoading').style.display='none';"
                 ></iframe>
 
             </div>
@@ -248,8 +239,6 @@ $result = $pdo->query($sql);
 
 </main>
 
-
-<!-- 푸터 -->
 <footer>
     <p>
         2026 Summer Sprint Camp
